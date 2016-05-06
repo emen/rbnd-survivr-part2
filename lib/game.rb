@@ -14,7 +14,7 @@ class Game
   end
   
   def individual_immunity_challenge
-    tribes.sample.members.sample
+    tribes.first.members.sample
   end
 
   def clear_tribes
@@ -22,6 +22,12 @@ class Game
   end
 
   def merge(tribe_name)
-    Tribe.new(name: tribe_name, members: tribes.flat_map {|tribe| tribe.members})
+    merged_tribe = Tribe.new(name: tribe_name, members: tribes.flat_map {|tribe| tribe.members})
+    clear_tribes
+    @tribes[0] = merged_tribe
+  end
+
+  def to_s
+    tribes.map(&:to_s).join("\n")
   end
 end

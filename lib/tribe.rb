@@ -7,7 +7,7 @@ class Tribe
     puts "Tribe '#{name}': #{members.map(&:to_s).join(' ')}"
   end
 
-  def tribal_council(immune:)
+  def tribal_council(immune: nil)
     @members.select { |member| member != immune }.sample.tap do |vote_off|
       @members.delete vote_off
     end

@@ -10,13 +10,14 @@ class Jury
   end
 
   def cast_votes(finalists)
-    votes = finalists.map{ |finalist| [finalist, 0] }.to_h
-    members.each do |member|
-      cast = finalists.sample
-      puts "#{member} vote for #{cast}"
-      votes[cast] += 1
+    votes_of = finalists.map{ |finalist| [finalist, 0] }.to_h
+    votes_of.tap do |votes|
+      members.each do |member|
+        finalist = finalists.sample
+        puts "Jury #{member} vote for #{finalist}"
+        votes[finalist] += 1
+      end
     end
-    votes
   end
 
   def report_votes(votes)

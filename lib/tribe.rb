@@ -1,10 +1,12 @@
+require 'colorizr'
+
 class Tribe
   attr_reader :name, :members
 
   def initialize(options)
     @name    = options[:name]
     @members = options[:members]
-    puts "Tribe '#{name}': #{members.map(&:to_s).join(' ')}"
+    puts "Tribe '#{to_s}': #{members.map(&:to_s).join(' ')}"
   end
 
   def tribal_council(immune: nil)
@@ -14,6 +16,6 @@ class Tribe
   end
 
   def to_s
-    name
+    name.blue
   end
 end

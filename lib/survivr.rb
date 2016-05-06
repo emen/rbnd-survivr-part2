@@ -31,22 +31,24 @@ def phase_one
 end
 
 def phase_two
-  winning_contestant = nil
+  immune_contestant = nil
   3.times do
     begin
-      @borneo.tribes.first.tribal_council(immune: winning_contestant)
       winning_contestant = @borneo.individual_immunity_challenge
+      @borneo.tribes.first.tribal_council(immune: immune_contestant)
+      immune_contestant = winning_contestant
     rescue
     end
   end
 end
 
 def phase_three
-  winning_contestant = nil
+  immune_contestant = nil
   7.times do
     begin
-      @jury.add_member @borneo.tribes.first.tribal_council(immune: winning_contestant)
       winning_contestant = @borneo.individual_immunity_challenge
+      @jury.add_member @borneo.tribes.first.tribal_council(immune: immune_contestant)
+      immune_contestant = winning_contestant
     rescue
     end
   end

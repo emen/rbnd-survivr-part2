@@ -8,6 +8,6 @@ class Contestant
   end
 
   def to_s
-    name.light_blue
+    name
   end
 end

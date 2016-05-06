@@ -14,7 +14,7 @@ class Jury
     votes_of.tap do |votes|
       members.each do |member|
         finalist = finalists.sample
-        puts "Jury #{member} vote for #{finalist}"
+        puts "Jury #{member.name.yellow} vote for #{finalist}"
         votes[finalist] += 1
       end
     end
@@ -22,7 +22,7 @@ class Jury
 
   def report_votes(votes)
     votes.each do |finalist, votes|
-      puts "#{finalist} has #{votes} vote(s)"
+      puts "#{finalist.name.green} has #{votes} vote(s)"
     end
   end
 

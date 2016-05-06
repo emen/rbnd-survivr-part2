@@ -6,7 +6,7 @@ class Tribe
   def initialize(options)
     @name    = options[:name]
     @members = options[:members]
-    puts "Tribe '#{to_s}': #{members.map(&:to_s).join(' ')}"
+    puts "Tribe '#{name.blue}': #{members.map{|member| member.name.light_blue}.join(' ')}"
   end
 
   def tribal_council(immune: nil)
@@ -16,6 +16,6 @@ class Tribe
   end
 
   def to_s
-    name.blue
+    name
   end
 end
